@@ -1,33 +1,39 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import MainStore from '../../store/MainStore';
 import LogIn from '../logIn/LogIn'
-// import Service from '../service/Service';
-import ServicesStore from '../../store/ServicesStore';
 import DetaliseEdit from '../detaliseEdit/DetaliseEdit';
 import BusinessDetails from '../businessDetails/BusinessDetails';
-function Admin() {
+import { observer } from 'mobx-react';
+import { useEffect } from 'react';
+import ServicesStore from '../../store/ServicesStore';
+
+
+import { Link, Outlet } from "react-router-dom";
+import ServiceArr from '../serviceArr/ServiceArr';
+import Service from '../service/Service';
+const Admin=observer(() => {
+useEffect(()=>{MainStore.getDetalise();},[])
 
   return (
-    <>
-  {!MainStore.isLogin?<><LogIn/></>:<>
-  {/* קומפוננטה של פרטי העסק +אפשרות עריכה  */}
-  <DetaliseEdit></DetaliseEdit>
-  {/* {MainStore.getDetalise} */}
-{ <BusinessDetails/> }
-{/* {MainStore.getDetalise?<><div>{MainStore.details}</div></>:<>blabla</>}/ */}
-  <Button variant="contained" disableElevation  > פגישות </Button>
-  <Button variant="contained"  onClick={ServicesStore.getServices }disableElevation  > שרותי העסק </Button>
-    
-    {/* קופסא שתתמלא בהתאם */}
-    
-    
-    
-    
-    
-    </>}
+    <> 
+  {!MainStore.isLogin&&<> <LogIn/> </>}
+  {MainStore.isLogin&&MainStore.isClick&&<DetaliseEdit/>} 
+  { MainStore.isLogin&&ServicesStore.isClick&&<ServiceArr/>}
+  {MainStore.isLogin&&ServicesStore.isClickService&&<Service/>} 
+
+  {MainStore.isLogin&&!MainStore.isClick&&<>
+
+  <BusinessDetails/> 
+ <br/>
+ 
+    <Link to="./services" > services </Link>
+|
+<Link to="./meeting"> meeting </Link>   </>}
+   
+<Outlet/>
+
 </> 
   )
-}
+})
  
 export default Admin

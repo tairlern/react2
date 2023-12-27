@@ -6,11 +6,16 @@ import { createBrowserRouter } from 'react-router-dom'
 import { RouterProvider } from 'react-router-dom'
 import User from './Commponents/user/User'
 import Admin from './Commponents/admin/Admin'
+// import Service from './Commponents/service/Service'
+import ServiceArr from './Commponents/serviceArr/ServiceArr'
+import Meeting from './Commponents/meeting/Meeting'
+// import App from './App'
+
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <User />,
+    element: <User/>,
     errorElement: <div>error contants</div>
 
   },
@@ -18,27 +23,29 @@ const router = createBrowserRouter([
     path: '/admin',
     element: <Admin />,
     errorElement: <div>error contants</div>,
-    // children: [
-    //   {
-    //     path: '',
-    //     element: <div>empty</div>,
-    //   },
-    //   {
-    //     path: 'service',
-    //     element: <div>services</div>,
-    //     errorElement: <div>error contant not found</div>
-    //   },
-    //   {
-    //     path: 'meeting',
-    //     element: <div>meeting</div>,
-    //     errorElement: <div>error contant not found</div>
-    //   }
-    // ]
+    children: [
+      {
+        path: '',
+        element: <div></div>,
+      },
+      {
+        path: 'services',
+        element: <ServiceArr/>,
+        errorElement: <div>error contant not found</div>
+      },
+      {
+        path: 'meeting',
+        element: <Meeting/>,
+        errorElement: <div>error contant not found</div>
+      }
+    ]
   }
-])
+],)
+
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <App/> */}
        <RouterProvider router={router} />
   </React.StrictMode>,
 )

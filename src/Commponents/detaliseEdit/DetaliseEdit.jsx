@@ -4,44 +4,107 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import MainStore from '../../store/MainStore';
 import { observer } from 'mobx-react';
-// import InputLabel from '@mui/material/InputLabel';
-const DetaliseEdit=(observer(()=> {
-// const [detalis,setDetalis]=useState(MainStore.getDetalise);
-const [name,setName]=useState('');
-const [address,setAddress]=useState('');
-const [phone,setPhone]=useState('');
-const [owner,setOwner]=useState('');
-const [logo,setLogo]=useState('');
-const [description,setDescription]=useState(' ');
- const saveDetails=()=>{
-    MainStore.saveDetalise(name,address,phone,owner,logo,description)
- }
-  return (
- <>
+import { styled } from '@mui/material/styles';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import IconButton from '@mui/material/IconButton';
+// import Stack from '@mui/joy/Stack';
+import Typography from '@mui/material/Typography';
+import { useEffect } from 'react';
 
-    <div id="form" >
-{/* { לןגו } */}
-    <TextField id="outlined-basic" label="שם העסק:" variant="outlined" value={name} onChange={(e) => setName(e.target.value)}  />
-    <br/>
-    <TextField id="outlined-basic" label="כתובת" variant="outlined" value={address} onChange={(e) => setAddress(e.target.value)}/>
-    <br/>
-    <TextField id="outlined-basic" label="טלפון" variant="outlined" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-    <br/>
-    <TextField id="outlined-basic" label="בעל העסק" variant="outlined"value={owner} onChange={(e) => setOwner(e.target.value)}/>
-    <br/>
-    <TextField id="outlined-basic" label="לוגו" variant="outlined"value={logo} onChange={(e) => setLogo(e.target.value)}/>
-    <br/>
-    <TextField id="outlined-basic" label="תאור" variant="outlined"value={description} onChange={(e) => setDescription(e.target.value)}/>
-    <br/>
-      <Button variant="contained"  onClick={saveDetails} disableElevation >
-            שמירה
+
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+  },
+  '& .MuiDialogActions-root': {
+    padding: theme.spacing(1),
+  },
+}));
+
+// import InputLabel from '@mui/material/InputLabel';
+const DetaliseEdit = (observer(() => {
+useEffect(() => {
+    handleClickOpen();
+}, []);
+  const handleClose = () => {
+    props.setIsOpen(false)
+    setOpen(false)
+
+  }
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  
+  // const [detalis,setDetalis]=useState(MainStore.getDetalise);
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState('');
+  const [owner, setOwner] = useState('');
+  const [logo, setLogo] = useState('');
+  const [description, setDescription] = useState(' ');
+  const saveDetails = () => {
+    MainStore.saveDetalise(name, address, phone, owner, logo, description)
+    MainStore.setIsClick(false);
+  }
+  return (
+    <>
+      <React.Fragment>
+        <BootstrapDialog
+          onClose={handleClose}
+          aria-labelledby="customized-dialog-title"
+          open={open}
+        >
+          <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+            add new service!
+          </DialogTitle>
+          <IconButton
+            aria-label="close"
+            onClick={handleClose}
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
+          >
+          </IconButton>
+          <DialogContent dividers>
+
+            <Typography gutterBottom>
+              {/* <Stack spacing={2}> */}
+              <TextField id="outlined-basic" label="שם העסק:" variant="outlined" value={name} onChange={(e) => setName(e.target.value)} />
+              <TextField id="outlined-basic" label="כתובת" variant="outlined" value={address} onChange={(e) => setAddress(e.target.value)} />
+              <TextField id="outlined-basic" label="טלפון" variant="outlined" value={phone} onChange={(e) => setPhone(e.target.value)} />
+
+              <TextField id="outlined-basic" label="בעל העסק" variant="outlined" value={owner} onChange={(e) => setOwner(e.target.value)} />
+
+              <TextField id="outlined-basic" label="לוגו" variant="outlined" value={logo} onChange={(e) => setLogo(e.target.value)} />
+
+              <TextField id="outlined-basic" label="תאור" variant="outlined" value={description} onChange={(e) => setDescription(e.target.value)} />
+
+              {/* </Stack> */}
+
+            </Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button variant="contained" onClick={saveDetails} disableElevation >
+              שמירה
             </Button>
-            <br/>
-    
-            </div>
-   
-      </>
+          </DialogActions>
+        </BootstrapDialog>
+      </React.Fragment>
+
+    </>
   )
 }))
-
 export default DetaliseEdit
+
+
+
+

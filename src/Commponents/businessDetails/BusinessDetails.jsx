@@ -3,38 +3,55 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import MainStore from '../../store/MainStore';
-import DetaliseEdit from '../detaliseEdit/DetaliseEdit';
+// import DetaliseEdit from '../detaliseEdit/DetaliseEdit';
 import { observer } from 'mobx-react-lite';
 import InputLabel from '@mui/material/InputLabel';
+
+
+// import * as React from 'react';
+import Box from '@mui/material/Box';
+// import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import DetaliseEdit from '../detaliseEdit/DetaliseEdit';
+// import { styled } from '@mui/material/styles';
+
+
+
+
+
+
 const BusinessDetails=(observer(()=> {
+  const [isOpen, SetIsOpen] = useState(false);
 // const[det,setDet]=useState(MainStore.details)
 
-
-  const saveDetails=()=>{
-    <DetaliseEdit/>
-  }
+  // const saveDetails=()=>{
+   
+  // }
   return (
  <>
-<div id="form" >
-  {console.log(MainStore.details.toLocaleString)}
-  {console.log("------------")}
-<InputLabel id="outlined-basic"  >שם: </InputLabel>
-    <br/>
-    {/* <InputLabel id="outlined-basic" label="כתובת" variant="outlined" value={address} onChange={(e) => setAddress(e.target.value)}/>
-    <br/>
-    <InputLabel id="outlined-basic" label="טלפון" variant="outlined" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-    <br/>
-    <InputLabel id="outlined-basic" label="בעל העסק" variant="outlined"value={owner} onChange={(e) => setOwner(e.target.value)}/>
-    <br/>
-    <InputLabel id="outlined-basic" label="לוגו" variant="outlined"value={logo} onChange={(e) => setLogo(e.target.value)}/>
-    <br/>
-    <InputLabel id="outlined-basic" label="תאור" variant="outlined"value={description} onChange={(e) => setDescription(e.target.value)}/>
-    */}
-     
-            </div>
-            <Button variant="contained"  onClick={saveDetails} disableElevation >
-            עריכה 
-            </Button>
+  <Box sx={{ width: '100%' }}>
+      <Stack spacing={2}>
+      <InputLabel id="outlined-basic"  >שם:{MainStore.details.name} </InputLabel>
+    {/* <br/> */}
+    <InputLabel id="outlined-basic"  >כתובת:{MainStore.details.address} </InputLabel>
+    {/* <br/> */}
+    <InputLabel id="outlined-basic"  >טלפון:{MainStore.details.phone} </InputLabel>
+    {/* <br/> */}
+    <InputLabel id="outlined-basic"  >בעל העסק:{MainStore.details.owner} </InputLabel>
+    {/* <br/> */}
+    <InputLabel id="outlined-basic"  >לוגו:{MainStore.details.logo} </InputLabel>
+    {/* <br/> */}
+    <InputLabel id="outlined-basic"  >תאור:{MainStore.details.description} </InputLabel>
+      </Stack>
+    </Box>
+    
+    {MainStore.isLogin&&<Button variant="contained"  onClick={()=> MainStore.setIsClick(true)}  >
+            עריכה
+            </Button> }  
+               {isOpen?
+                <DetaliseEdit setIsOpen={SetIsOpen}></DetaliseEdit>//נפתח רק בפעם הראשונה
+                :<></>
+            }
       </>
   )
 }))
