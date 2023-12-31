@@ -9,7 +9,21 @@ import MainStore from '../../store/MainStore';
 import Service from '../service/Service';
 
 
-
+// import * as React from 'react';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+// import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+  >
+    •
+  </Box>
+);
 
 
 const ServiceArr=(observer(()=> {
@@ -21,19 +35,31 @@ const ServiceArr=(observer(()=> {
  <>
  {ServicesStore.servicesArry?.map((_, i) =>
                     <div key={i}>
-                      { ServicesStore.servicesArry[i].name}
-                      <br/>
-                      { ServicesStore.servicesArry[i].description}
-                      <br/>
-                      { ServicesStore.servicesArry[i].price}
-                      <br/>
-                      { ServicesStore.servicesArry[i].duration}
-                      <br/>
-                     
-                      <br/>
+                      
+<Card sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+         { ServicesStore.servicesArry[i].name} :שם
+        </Typography>
+        
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        { ServicesStore.servicesArry[i].description} :תאור
+        </Typography>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+         { ServicesStore.servicesArry[i].price}:מחיר
+        </Typography>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        { ServicesStore.servicesArry[i].duration} :משך הפגישה
+        </Typography>
+       
+      </CardContent>
+      <CardActions>
+      
+      </CardActions>
+    </Card>     
                      
                     </div>)}
-                    {MainStore.isLogin&& <Button variant="contained" disableElevation onClick={()=> {SetIsOpens(true)}}  >
+                     {MainStore.isLogin&& <Button variant="contained" disableElevation onClick={()=> {SetIsOpens(true)}}  >
                        להוספת שרות
                      </Button>} 
 
@@ -51,3 +77,46 @@ const ServiceArr=(observer(()=> {
 }))
 
 export default ServiceArr
+
+/**import * as React from 'react';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+  >
+    •
+  </Box>
+);
+
+export default function BasicCard() {
+  return (
+    <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Word of the Day
+        </Typography>
+        <Typography variant="h5" component="div">
+          be{bull}nev{bull}o{bull}lent
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          adjective
+        </Typography>
+        <Typography variant="body2">
+          well meaning and kindly.
+          <br />
+          {'"a benevolent smile"'}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
+  );
+} */

@@ -36,7 +36,8 @@ const router = createBrowserRouter([
       {
         path: 'meeting',
         element: <Meeting/>,
-        errorElement: <div>error contant not found</div>
+        errorElement: <h3>Error!!!!!  the page meeting not found!!!!</h3>
+        
       }
     ]
   }

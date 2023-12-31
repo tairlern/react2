@@ -1,56 +1,73 @@
 import { observable, makeObservable, action } from 'mobx';
 
 class MeetingStore {
-    count=0;
-    meeting={   id: "",
-    serviceType: "",
-    dateTime: "",
-    clientName:  "",
-    clientPhone:"",
-    clientEmail: "",}
-    meetings=[];
-    isAddMetting=false;
+    count = 0;
+    meeting = {
+        id: "",
+        serviceType: "",
+        dateTime: "",
+        clientName: "",
+        clientPhone: "",
+        clientEmail: "",
+    }
+    meetings = [];
+    meetingResponse=true;
+    isAddMetting = false;
     constructor() {
         makeObservable(this, {
-            count:observable,
-            meeting:observable,
+            meetingResponse :observable,
+            count: observable,
+            meeting: observable,
             meetings: observable,
             isAddMetting: observable,
-            saveDetailsAddMeeting:action,
-            setAddMeeting:action,
-            incCount:action,
-            getMeeting:action,
+            saveMeeting: action,
+            setAddMeeting: action,
+            incCount: action,
+            getMeeting: action,
+            setMeetingRes:action,
+
         })
     }
-    addMeeting=(value)=>{
-        this.meetings=[...this.meetings,{value}];
+    addMeeting = (value) => {
+        this.meetings = [...this.meetings, { value }];
     }
     setAddMeeting = (val) => {
         this.isAddMetting = val;
     }
-incCount=()=>{this.count+=1;}
-    saveDetailsAddMeeting=async(id, MserviceType,dateTime,clientName,clientPhone,clientEmail)=>{
+    incCount = () => { this.count += 1; }
+    saveMeeting = async (id, serviceType, dateTime, clientName, clientPhone, clientEmail) => {
         console.log("enter save saveDetalise ")
-        console.log(id, MserviceType,dateTime,clientName,clientPhone,clientEmail)
+        console.log(id, serviceType, dateTime, clientName, clientPhone, clientEmail)
         const response = await fetch("http://localhost:8787/appointment", {
             method: "POST",
             body: JSON.stringify({
-                id, MserviceType,dateTime,clientName,clientPhone,clientEmail
+                id, serviceType, dateTime, clientName, clientPhone, clientEmail
             }),
             headers: {
-              "Content-Type": "application/json",
+                "Content-Type": "application/json",
             },
-          })
-          this.meetings=response.json();
-       }
+        })
+        this.meetings = response.json();
+        this.getMeeting();
+        if(response.status===200){
+            this.meetingResponse=true;
+        }
+        else{
+            this.meetingResponse=false;
+        }
+    }
 
-       getMeeting=async()=>{console.log("getServies")
-       const meet = await fetch("http://localhost:8787/appointments");
-     const data= await meet.json();
-     this.meetings=([...data]);
-   
-   
-   }
+    getMeeting = async () => {
+        console.log("getServies")
+        const meet = await fetch("http://localhost:8787/appointments");
+        const data = await meet.json();
+        this.meetings = ([...data].sort((x,y)=>new Date(y.dateTime)-new Date(x.dateTime)));
+        
+    }
+setMeetingRes=(val)=>{
+this.meetingResponse=val;
+}
+
 }
 
 export default new MeetingStore();

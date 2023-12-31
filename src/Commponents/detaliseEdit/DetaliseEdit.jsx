@@ -26,31 +26,34 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 // import InputLabel from '@mui/material/InputLabel';
-const DetaliseEdit = (observer(() => {
+const DetaliseEdit = (observer((props) => {
 useEffect(() => {
     handleClickOpen();
 }, []);
+
+  // const [open, setOpen] = useState(false);
+const [opens, setOpens] = useState(false);
+  
   const handleClose = () => {
     props.setIsOpen(false)
-    setOpen(false)
-
+    setOpens(false)
+    
   }
-  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpens(true);
   };
-  
   // const [detalis,setDetalis]=useState(MainStore.getDetalise);
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [phone, setPhone] = useState('');
-  const [owner, setOwner] = useState('');
-  const [logo, setLogo] = useState('');
-  const [description, setDescription] = useState(' ');
+  const [name, setName] = useState(MainStore.details.name);
+  const [address, setAddress] = useState(MainStore.details.address);
+  const [phone, setPhone] = useState(MainStore.details.phone);
+  const [owner, setOwner] = useState(MainStore.details.owner);
+  const [logo, setLogo] = useState(MainStore.details.logo);
+  const [description, setDescription] = useState(MainStore.details.description);
   const saveDetails = () => {
     MainStore.saveDetalise(name, address, phone, owner, logo, description)
     MainStore.setIsClick(false);
+    handleClose();
   }
   return (
     <>

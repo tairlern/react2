@@ -6,14 +6,23 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 // import Meeting from '../meeting/Meeting';
 import AddMeeting from '../addMeeting/AddMeeting';
+import { useEffect } from 'react';
+import MainStore from '../../store/MainStore';
+
+
+
+
 
 
 function User() {
+  useEffect(()=>{MainStore.getDetalise();},[])
   const [isOpens, SetIsOpens] = useState(false);
-
     return (
       <>
-  <BusinessDetails/>
+
+
+    <BusinessDetails />
+  
   <ServiceArr/>
   <Button variant="contained" disableElevation onClick={()=> {SetIsOpens(true)}} >
                 קבע פגישה
@@ -22,6 +31,8 @@ function User() {
                      <AddMeeting setIsOpen={SetIsOpens}></AddMeeting>//נפתח רק בפעם הראשונה
                 :<></>
             }
+
+                      
       </>
     )
   }

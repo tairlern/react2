@@ -14,7 +14,7 @@ import './LogIn.css'
 import MainStore from '../../store/MainStore';
 import Admin from '../admin/Admin';
 import { observer } from 'mobx-react-lite';
-
+import Alert from '@mui/material/Alert';
 
 const LogIn = (observer(() => {
   const [name, setName] = useState('')
@@ -45,14 +45,14 @@ const LogIn = (observer(() => {
             autoComplete="off"
           >
             <InputLabel id="testOpen">wellcom plise enter name and password: </InputLabel>
-            <TextField id="outlined-basic" label="Name" variant="outlined" value={name} onChange={(e) => setName(e.target.value)} />
+            <TextField id="outlined-basic" label="Name" variant="outlined" value={name} onChange={(e) => {setName(e.target.value);MainStore.setResponse(true)}} />
             <br />
             <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined" >
               <InputLabel htmlFor="outlined-adornment-password"  >Password</InputLabel>
               <OutlinedInput
                 id="outlined-adornment-password"
                 type={showPassword ? 'text' : 'password'}
-                value={password} onChange={(e) => setPassword(e.target.value)}
+                value={password} onChange={(e) => {setPassword(e.target.value);MainStore.setResponse(true)}}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -81,6 +81,7 @@ const LogIn = (observer(() => {
           <Admin />
 
         </>}
+     {!MainStore.IsResponse&&   <Alert  severity="error">Error! One of the data is incorrect</Alert>}
 
 
     </>

@@ -1,55 +1,60 @@
 import * as React from 'react';
-// import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import MainStore from '../../store/MainStore';
-// import DetaliseEdit from '../detaliseEdit/DetaliseEdit';
 import { observer } from 'mobx-react-lite';
 import InputLabel from '@mui/material/InputLabel';
-
-
-// import * as React from 'react';
-import Box from '@mui/material/Box';
-// import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
 import DetaliseEdit from '../detaliseEdit/DetaliseEdit';
-// import { styled } from '@mui/material/styles';
-
-
-
-
+// import styled from '@mui/system/styled';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import "../../App.css"
+// import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
 
 
 const BusinessDetails=(observer(()=> {
-  const [isOpen, SetIsOpen] = useState(false);
-// const[det,setDet]=useState(MainStore.details)
 
-  // const saveDetails=()=>{
-   
-  // }
+  const [isOpens, SetIsOpens] = useState(false);
+
   return (
  <>
-  <Box sx={{ width: '100%' }}>
-      <Stack spacing={2}>
-      <InputLabel id="outlined-basic"  >שם:{MainStore.details.name} </InputLabel>
-    {/* <br/> */}
-    <InputLabel id="outlined-basic"  >כתובת:{MainStore.details.address} </InputLabel>
-    {/* <br/> */}
-    <InputLabel id="outlined-basic"  >טלפון:{MainStore.details.phone} </InputLabel>
-    {/* <br/> */}
-    <InputLabel id="outlined-basic"  >בעל העסק:{MainStore.details.owner} </InputLabel>
-    {/* <br/> */}
-    <InputLabel id="outlined-basic"  >לוגו:{MainStore.details.logo} </InputLabel>
-    {/* <br/> */}
-    <InputLabel id="outlined-basic"  >תאור:{MainStore.details.description} </InputLabel>
-      </Stack>
-    </Box>
-    
-    {MainStore.isLogin&&<Button variant="contained"  onClick={()=> MainStore.setIsClick(true)}  >
+     
+<Card sx={{Width: '100%' }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+           <InputLabel id="outlined-basic"  >:שם{MainStore.details.name} </InputLabel>
+        </Typography>
+      
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+         <InputLabel id="outlined-basic"  >:כתובת{MainStore.details.address} </InputLabel>
+        </Typography>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <InputLabel id="outlined-basic"  >:טלפון{MainStore.details.phone} </InputLabel>
+        </Typography>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+         <InputLabel id="outlined-basic"  >:בעל העסק{MainStore.details.owner} </InputLabel>
+        </Typography>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+         
+     <InputLabel id="outlined-basic"  >:לוגו{MainStore.details.logo} </InputLabel>
+        </Typography>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+           <InputLabel id="outlined-basic"  >:תאור{MainStore.details.description} </InputLabel>
+        </Typography>
+      </CardContent>
+      <CardActions>
+      
+      </CardActions>
+    </Card>
+          
+           {MainStore.isLogin&&<Button variant="contained"  onClick={()=> {SetIsOpens(true)}}  >
             עריכה
-            </Button> }  
-               {isOpen?
-                <DetaliseEdit setIsOpen={SetIsOpen}></DetaliseEdit>//נפתח רק בפעם הראשונה
+            </Button> 
+            }  
+               {isOpens?
+                <DetaliseEdit setIsOpen={SetIsOpens}></DetaliseEdit>//נפתח רק בפעם הראשונה
                 :<></>
             }
       </>
