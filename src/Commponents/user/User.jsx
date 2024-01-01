@@ -8,8 +8,9 @@ import { useState } from 'react';
 import AddMeeting from '../addMeeting/AddMeeting';
 import { useEffect } from 'react';
 import MainStore from '../../store/MainStore';
-
-
+import '../admin/Admin.css'
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 
 
 
@@ -21,12 +22,19 @@ function User() {
       <>
 
 
-    <BusinessDetails />
+   <header className='heder'> <BusinessDetails /></header>
   
-  <ServiceArr/>
-  <Button variant="contained" disableElevation onClick={()=> {SetIsOpens(true)}} >
-                קבע פגישה
-              </Button>
+   <ServiceArr/>
+
+  {/* <Button variant="contained"  disableElevation  >
+                +
+              </Button> */}
+              <div className='bottun1'>
+              <Fab color="primary"  aria-label="add" onClick={()=> {SetIsOpens(true)}}> 
+        <AddIcon />
+      </Fab>
+              </div>
+          
               {isOpens?
                      <AddMeeting setIsOpen={SetIsOpens}></AddMeeting>//נפתח רק בפעם הראשונה
                 :<></>

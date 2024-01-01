@@ -1,0 +1,20 @@
+.validd{
+background-color: white;
+}
+.notValid{
+/* border-color: rgb(226, 19, 19);
+color: red; */
+background-color: rgb(206, 133, 133);
+}
+.editD{
+    left: 0px;
+}
+/* .css-zddlty-MuiButtonBase-root-MuiButton-root {
+   bottom: 0px !important;
+   color: blueviolet;
+} */
+.css-zddlty-MuiButtonBase-root-MuiButton-root {
+z-index: 1 !important;
+margin-bottom: 3px !important;
+padding-left: 50px IM !important;
+}

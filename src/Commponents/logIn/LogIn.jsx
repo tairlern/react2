@@ -44,7 +44,7 @@ const LogIn = (observer(() => {
             noValidate
             autoComplete="off"
           >
-            <InputLabel id="testOpen">wellcom plise enter name and password: </InputLabel>
+            <InputLabel id="testOpen"> :הכנס שם וסיסמא  </InputLabel>
             <TextField id="outlined-basic" label="Name" variant="outlined" value={name} onChange={(e) => {setName(e.target.value);MainStore.setResponse(true)}} />
             <br />
             <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined" >

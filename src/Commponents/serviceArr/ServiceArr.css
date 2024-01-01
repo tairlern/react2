@@ -1,0 +1,12 @@
+.listMeetimg{
+    position: relative;
+    top:35vw;
+    display: flex;
+}
+
+.addSer{
+     display: flex !important;
+    top: 40vw !important;
+    left: 3px !important;
+    z-index: 2;
+}

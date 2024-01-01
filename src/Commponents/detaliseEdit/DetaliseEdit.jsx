@@ -40,6 +40,7 @@ const [opens, setOpens] = useState(false);
     
   }
 
+ 
   const handleClickOpen = () => {
     setOpens(true);
   };
@@ -54,6 +55,7 @@ const [opens, setOpens] = useState(false);
     MainStore.saveDetalise(name, address, phone, owner, logo, description)
     MainStore.setIsClick(false);
     handleClose();
+    {MainStore.setfirstLogin(false)}
   }
   return (
     <>
@@ -61,10 +63,10 @@ const [opens, setOpens] = useState(false);
         <BootstrapDialog
           onClose={handleClose}
           aria-labelledby="customized-dialog-title"
-          open={open}
+          open={opens}
         >
           <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-            add new service!
+         פרטי העסק
           </DialogTitle>
           <IconButton
             aria-label="close"
@@ -81,15 +83,15 @@ const [opens, setOpens] = useState(false);
 
             <Typography gutterBottom>
               {/* <Stack spacing={2}> */}
-              <TextField id="outlined-basic" label="שם העסק:" variant="outlined" value={name} onChange={(e) => setName(e.target.value)} />
-              <TextField id="outlined-basic" label="כתובת" variant="outlined" value={address} onChange={(e) => setAddress(e.target.value)} />
-              <TextField id="outlined-basic" label="טלפון" variant="outlined" value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <TextField id="outlined-basic" label=" :שם העסק" variant="outlined" value={name} onChange={(e) => setName(e.target.value)} />
+              <TextField id="outlined-basic" label=" :כתובת" variant="outlined" value={address} onChange={(e) => setAddress(e.target.value)} />
+              <TextField id="outlined-basic" label=" :טלפון" variant="outlined" value={phone} onChange={(e) => setPhone(e.target.value)} />
 
-              <TextField id="outlined-basic" label="בעל העסק" variant="outlined" value={owner} onChange={(e) => setOwner(e.target.value)} />
+              <TextField id="outlined-basic" label=" :בעל העסק" variant="outlined" value={owner} onChange={(e) => setOwner(e.target.value)} />
 
-              <TextField id="outlined-basic" label="לוגו" variant="outlined" value={logo} onChange={(e) => setLogo(e.target.value)} />
+              {/* <TextField id="outlined-basic" label="לוגו" variant="outlined" value={logo} onChange={(e) => setLogo(e.target.value)} /> */}
 
-              <TextField id="outlined-basic" label="תאור" variant="outlined" value={description} onChange={(e) => setDescription(e.target.value)} />
+              <TextField id="outlined-basic" label=" :תאור" variant="outlined" value={description} onChange={(e) => setDescription(e.target.value)} />
 
               {/* </Stack> */}
 

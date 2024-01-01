@@ -14,7 +14,7 @@ import IconButton from '@mui/material/IconButton';
 // import Stack from '@mui/joy/Stack';
 import Typography from '@mui/material/Typography';
 import { useEffect } from 'react';
-
+import '../admin/Admin.css'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -49,6 +49,7 @@ const Service = (observer((props) => {
     console.log("saveService");
     ServicesStore.saveService(MainStore.count, name, description, price, duration);
     ServicesStore.setIsClickSave(false);
+
     // setOpens(false)
     handleClose();
     MainStore.incCount();

@@ -11,13 +11,13 @@ function AdminPage()  {
         <> 
     
       <header className='heder'> <BusinessDetails/> </header>
-    
+    <div className='boton2'>
       <Button variant="outlined"> <Link to="./services" > services </Link></Button>
       <Button variant="outlined"><Link to="./meeting"> meeting </Link>   </Button>
-           
+         
     
+    </div> 
     <Outlet/>
-   
     </> 
       )
     }

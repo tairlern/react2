@@ -2,7 +2,9 @@
     size: 500px;
     font: optional;
 }
-body{
-    align-items:center;
-    display: flex;
+
+.boxLogin{
+    align-items:20%;
+   margin-top:20%;
+   
 }

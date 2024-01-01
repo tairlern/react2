@@ -1,4 +1,46 @@
-.heder{
-    padding-top: 0%;
-    /* position: fixed; */
+.heder {
+    /* padding-top: 0%; */
+    position: fixed; 
+    /* top: 0px; */
+    /* padding-top: 2px; */
+   width:100%;
+    align-items: center;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    background-color: #e2e6ff;
+   
+    z-index: 1;
+    flex-wrap: wrap;
+}
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+    top: 37vw !important;
+}
+.boton2 {
+  
+    top: 20%;
+    right: 10%;
+    display: contents;
+    justify-content: start;
+
+}
+
+.bottun1 {
+    position: fixed;
+    right: 2vw;
+    bottom: 2vw;
+    /* top: 40vw; */
+    /* left: -42vw;
+    z-index: 2; */
+   
+}
+
+/* .CardHeader {
+ width: 100%; */
+
+
+.editD {
+    /* left: 0px; */
+    /* padding-bottom: 0;
+    padding-left: 0; */
 }

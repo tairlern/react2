@@ -62,13 +62,15 @@ else
 };
      return (
       <>
-<div>enter to meeting</div>
+<h5>רשימת פגישות</h5>
+<body className='listMeetimg'>
+  
 
 {MeetingStore.meetings.map((_, i) =>
                   <div key={i}>
 
 
-<Card sx={{ minWidth: 275 }}>
+<Card sx={{ minWidth: 275 }} >
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
          {MeetingStore.meetings[i].serviceType}
@@ -92,6 +94,7 @@ else
                    
                   </div>)
           }
+          </body>
  </>
     )
   }))

@@ -7,7 +7,7 @@ import ServicesStore from '../../store/ServicesStore';
 import Button from '@mui/material/Button';
 import MainStore from '../../store/MainStore';
 import Service from '../service/Service';
-
+import './ServiceArr.css'
 
 // import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -33,6 +33,8 @@ const ServiceArr=(observer(()=> {
   useEffect(()=>{ServicesStore.getServices();},[]);
   return (
  <>
+
+ <div className='listMeetimg'>
  {ServicesStore.servicesArry?.map((_, i) =>
                     <div key={i}>
                       
@@ -59,7 +61,8 @@ const ServiceArr=(observer(()=> {
     </Card>     
                      
                     </div>)}
-                     {MainStore.isLogin&& <Button variant="contained" disableElevation onClick={()=> {SetIsOpens(true)}}  >
+     </div>
+                 {MainStore.isLogin&& <Button variant="contained" className='addSer' disableElevation onClick={()=> {SetIsOpens(true)}}  >
                        להוספת שרות
                      </Button>} 
 

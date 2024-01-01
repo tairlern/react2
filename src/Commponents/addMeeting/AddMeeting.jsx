@@ -24,7 +24,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import dayjs from 'dayjs';
 import ServicesStore from '../../store/ServicesStore';
-
+// import Swal from 'sweetalert2'
+import './AddMeeting.css'
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
@@ -58,6 +59,7 @@ const AddMeeting = (observer((props) => {
   useEffect(() => {
     handleClickOpen();
   }, []);
+  
   const [value, setValue] = useState(dayjs(new Date()));
   const [opens, setOpens] = useState(false);
    const [type, setType] = useState("");
@@ -68,7 +70,7 @@ const AddMeeting = (observer((props) => {
   const [clientEmail, setClientEmail] = useState('');
  const[i,setI]=useState(0);
   const theme = useTheme();
-
+const[valid,setValid]=useState('validd');
   const handleChangee = (newValue) => {
     setValue(newValue);
     setDateTime(newValue);
@@ -83,19 +85,21 @@ const AddMeeting = (observer((props) => {
     setOpens(true);
   };
 
- const saveMeeting = () => {
+ const saveMeeting =async () => {
+// const f=dateTime.format('YYYY-MM-DDTHH:mm');
 
-
-console.log(MeetingStore.count,type, dateTime, clientName, clientPhone, clientEmail);
-    MeetingStore.saveMeeting(MeetingStore.count, type, dateTime, clientName, clientPhone, clientEmail)
-    handleClose();
-    MeetingStore.incCount();
+console.log(MeetingStore.count,type,dateTime, clientName, clientPhone, clientEmail);
+    MeetingStore.saveMeeting(MeetingStore.count, type, dateTime.dateTime, clientName, clientPhone, clientEmail).then(()=>{
+      { handleClose();}
+    
+       MeetingStore.incCount();})
+    
   }
-  const handel=(event)=>{
-    const index=event.target.i;
-   type=ServicesStore.servicesArry[index];
+  // const handel=(event)=>{
+  //   const index=event.target.i;
+  //  type=ServicesStore.servicesArry[index];
 
-  }
+  // }
 
   return (
     <>
@@ -128,6 +132,8 @@ console.log(MeetingStore.count,type, dateTime, clientName, clientPhone, clientEm
               <br />
 
               <FormControl sx={{ m: 1, width: 300 }}>
+
+          
         <InputLabel id="demo-multiple-name-label">סוג פגישה </InputLabel>
         <Select
           labelId="demo-multiple-name-label"
@@ -154,16 +160,16 @@ console.log(MeetingStore.count,type, dateTime, clientName, clientPhone, clientEm
       </FormControl>
     
     <br />
+    <FormControl sx={{ m: 1, width: 300 }}    className={valid}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-
                 <DateTimePicker
                   label="תאריך"
                   value={dateTime}
-                  onChange={handleChangee} 
+                  onChange={()=>{handleChangee,setValid('validd')}} 
                   renderInput={(params) => <TextField {...params} />}
                 />
-
               </LocalizationProvider>
+              </FormControl>
               <br />
               <TextField id="outlined-basic" label="שם" variant="outlined" value={clientName} onChange={(e) => setClientName(e.target.value)} />
               <br />
@@ -185,10 +191,7 @@ console.log(MeetingStore.count,type, dateTime, clientName, clientPhone, clientEm
         </BootstrapDialog>
       </React.Fragment>
 
-      <Button variant="contained" onClick={saveMeeting} disableElevation >
-        שליחה
-      </Button>
-
+  
 
 
       <br />

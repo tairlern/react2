@@ -1,5 +1,5 @@
 import { observable, makeObservable, action } from 'mobx';
-
+import Swal from 'sweetalert2'
 class MeetingStore {
     count = 0;
     meeting = {
@@ -49,11 +49,23 @@ class MeetingStore {
         })
         this.meetings = response.json();
         this.getMeeting();
+        console.log(response.status)
         if(response.status===200){
             this.meetingResponse=true;
+
+            Swal.fire({
+                title: "!מצויין",
+                text: "הפגישה הוספה בהצלחה",
+                icon: "success"
+              })
         }
         else{
-            this.meetingResponse=false;
+            this.meetingResponse=false; 
+            Swal.fire({
+                title: "!שגיאה",
+                text: "התאריך תפוס כבר ,נסו שוב ",
+                icon: "error"
+              })
         }
     }
 
