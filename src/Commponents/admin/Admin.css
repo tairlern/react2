@@ -14,17 +14,32 @@
     flex-wrap: wrap;
 }
 .css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
-    top: 37vw !important;
+    top: 28vw !important;
+    /* position: fixed !important; */
+     display: flex !important;
 }
 .boton2 {
-  
-    top: 20%;
+  position: fixed;
+ display: flex ;
+    top:15vw;
     right: 10%;
     display: contents;
     justify-content: start;
 
 }
-
+.b1{
+    top: 28vw !important;
+    position: fixed !important;
+     display: flex !important;
+     z-index: 2;
+}
+.b2{
+    top: 28vw !important;
+    position: fixed !important;
+    left:22vw;
+     display: flex !important;
+     z-index: 2;
+}
 .bottun1 {
     position: fixed;
     right: 2vw;

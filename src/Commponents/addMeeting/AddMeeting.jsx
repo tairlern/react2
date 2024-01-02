@@ -85,15 +85,14 @@ const[valid,setValid]=useState('validd');
     setOpens(true);
   };
 
- const saveMeeting =async () => {
-// const f=dateTime.format('YYYY-MM-DDTHH:mm');
+ const saveMeeting =() => {
+const f=dateTime.format('YYYY-MM-DDTHH:mm');
 
-console.log(MeetingStore.count,type,dateTime, clientName, clientPhone, clientEmail);
-    MeetingStore.saveMeeting(MeetingStore.count, type, dateTime.dateTime, clientName, clientPhone, clientEmail).then(()=>{
+console.log(MeetingStore.count,type,f, clientName, clientPhone, clientEmail);
+    MeetingStore.saveMeeting(MeetingStore.count, type, f, clientName, clientPhone, clientEmail)
       { handleClose();}
     
-       MeetingStore.incCount();})
-    
+       MeetingStore.incCount();
   }
   // const handel=(event)=>{
   //   const index=event.target.i;
@@ -168,6 +167,21 @@ console.log(MeetingStore.count,type,dateTime, clientName, clientPhone, clientEma
                   onChange={()=>{handleChangee,setValid('validd')}} 
                   renderInput={(params) => <TextField {...params} />}
                 />
+{/* <DateTimePicker
+                            renderInput={(props) => (
+                                <TextField
+                                    {...props}
+                                    variant="outlined"
+                                    className="inputs"
+                                    name="dateTime"
+                                    label="Meeting Date and Time"
+                                />
+                            )}
+                            value={formData.dateTime}
+                            onChange={handleDateTimeChange}
+                            disablePast
+                            required
+                        /> */}
               </LocalizationProvider>
               </FormControl>
               <br />

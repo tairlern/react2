@@ -41,17 +41,17 @@ const ServiceArr=(observer(()=> {
 <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-         { ServicesStore.servicesArry[i].name} :שם
+      שם  : { ServicesStore.servicesArry[i].name} 
         </Typography>
         
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        { ServicesStore.servicesArry[i].description} :תאור
+        תאור : { ServicesStore.servicesArry[i].description}
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-         { ServicesStore.servicesArry[i].price}:מחיר
+       מחיר : { ServicesStore.servicesArry[i].price}
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        { ServicesStore.servicesArry[i].duration} :משך הפגישה
+         משך הפגישה : { ServicesStore.servicesArry[i].duration}
         </Typography>
        
       </CardContent>

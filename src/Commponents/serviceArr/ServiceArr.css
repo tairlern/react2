@@ -6,7 +6,9 @@
 
 .addSer{
      display: flex !important;
-    top: 40vw !important;
+    top: 47vw !important;
     left: 3px !important;
     z-index: 2;
+
+position: fixed !important;
 }

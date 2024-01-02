@@ -36,6 +36,7 @@ class MeetingStore {
     }
     incCount = () => { this.count += 1; }
     saveMeeting = async (id, serviceType, dateTime, clientName, clientPhone, clientEmail) => {
+        // debugger
         console.log("enter save saveDetalise ")
         console.log(id, serviceType, dateTime, clientName, clientPhone, clientEmail)
         const response = await fetch("http://localhost:8787/appointment", {
