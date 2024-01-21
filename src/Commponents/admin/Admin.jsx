@@ -4,8 +4,6 @@ import LogIn from '../logIn/LogIn'
 import { observer } from 'mobx-react';
 import { useEffect } from 'react';
 import AdminPage from './AdminPage';
-// import DetaliseEdit from '../detaliseEdit/DetaliseEdit';
-// import { useState } from 'react';
 
 
 const Admin=observer(() => {

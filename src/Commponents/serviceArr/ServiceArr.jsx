@@ -1,20 +1,15 @@
 import * as React from 'react';
-
 import { observer } from 'mobx-react-lite';
 import { useEffect,useState } from 'react';
 import ServicesStore from '../../store/ServicesStore';
-
 import Button from '@mui/material/Button';
 import MainStore from '../../store/MainStore';
 import Service from '../service/Service';
 import './ServiceArr.css'
-
-// import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-// import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 const bull = (
   <Box
@@ -25,15 +20,11 @@ const bull = (
   </Box>
 );
 
-
 const ServiceArr=(observer(()=> {
-
   const [isOpens, SetIsOpens] = useState(false);
-
   useEffect(()=>{ServicesStore.getServices();},[]);
   return (
  <>
-
  <div className='listMeetimg'>
  {ServicesStore.servicesArry?.map((_, i) =>
                     <div key={i}>

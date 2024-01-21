@@ -24,7 +24,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import dayjs from 'dayjs';
 import ServicesStore from '../../store/ServicesStore';
-// import Swal from 'sweetalert2'
 import './AddMeeting.css'
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -94,11 +93,7 @@ console.log(MeetingStore.count,type,f, clientName, clientPhone, clientEmail);
     
        MeetingStore.incCount();
   }
-  // const handel=(event)=>{
-  //   const index=event.target.i;
-  //  type=ServicesStore.servicesArry[index];
-
-  // }
+ 
 
   return (
     <>
@@ -126,7 +121,6 @@ console.log(MeetingStore.count,type,f, clientName, clientPhone, clientEmail);
           <DialogContent dividers>
 
             <Typography gutterBottom>
-              {/* <Stack spacing={2}> */}
 
               <br />
 
@@ -137,10 +131,8 @@ console.log(MeetingStore.count,type,f, clientName, clientPhone, clientEmail);
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
-          // multiple
           value={serviceType}
         
-          // onChange={(e) => setServiceType(e.target.value)} 
           input={<OutlinedInput label="סוג" />}
           MenuProps={MenuProps}
            onChange={(e)=>{setType(e.target.value);setServiceType(e.target.value)
@@ -167,21 +159,6 @@ console.log(MeetingStore.count,type,f, clientName, clientPhone, clientEmail);
                   onChange={()=>{handleChangee,setValid('validd')}} 
                   renderInput={(params) => <TextField {...params} />}
                 />
-{/* <DateTimePicker
-                            renderInput={(props) => (
-                                <TextField
-                                    {...props}
-                                    variant="outlined"
-                                    className="inputs"
-                                    name="dateTime"
-                                    label="Meeting Date and Time"
-                                />
-                            )}
-                            value={formData.dateTime}
-                            onChange={handleDateTimeChange}
-                            disablePast
-                            required
-                        /> */}
               </LocalizationProvider>
               </FormControl>
               <br />
@@ -192,7 +169,7 @@ console.log(MeetingStore.count,type,f, clientName, clientPhone, clientEmail);
               <TextField id="outlined-basic" label="מייל" variant="outlined" value={clientEmail} onChange={(e) => setClientEmail(e.target.value)} />
               <br />
 
-              {/* </Stack> */}
+           
 
             </Typography>
           </DialogContent>

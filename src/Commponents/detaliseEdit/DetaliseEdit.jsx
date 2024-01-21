@@ -10,7 +10,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
-// import Stack from '@mui/joy/Stack';
 import Typography from '@mui/material/Typography';
 import { useEffect } from 'react';
 
@@ -25,13 +24,11 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-// import InputLabel from '@mui/material/InputLabel';
 const DetaliseEdit = (observer((props) => {
 useEffect(() => {
     handleClickOpen();
 }, []);
 
-  // const [open, setOpen] = useState(false);
 const [opens, setOpens] = useState(false);
   
   const handleClose = () => {
@@ -44,7 +41,6 @@ const [opens, setOpens] = useState(false);
   const handleClickOpen = () => {
     setOpens(true);
   };
-  // const [detalis,setDetalis]=useState(MainStore.getDetalise);
   const [name, setName] = useState(MainStore.details.name);
   const [address, setAddress] = useState(MainStore.details.address);
   const [phone, setPhone] = useState(MainStore.details.phone);
@@ -82,18 +78,15 @@ const [opens, setOpens] = useState(false);
           <DialogContent dividers>
 
             <Typography gutterBottom>
-              {/* <Stack spacing={2}> */}
               <TextField id="outlined-basic" label=" :שם העסק" variant="outlined" value={name} onChange={(e) => setName(e.target.value)} />
               <TextField id="outlined-basic" label=" :כתובת" variant="outlined" value={address} onChange={(e) => setAddress(e.target.value)} />
               <TextField id="outlined-basic" label=" :טלפון" variant="outlined" value={phone} onChange={(e) => setPhone(e.target.value)} />
 
               <TextField id="outlined-basic" label=" :בעל העסק" variant="outlined" value={owner} onChange={(e) => setOwner(e.target.value)} />
 
-              {/* <TextField id="outlined-basic" label="לוגו" variant="outlined" value={logo} onChange={(e) => setLogo(e.target.value)} /> */}
 
               <TextField id="outlined-basic" label=" :תאור" variant="outlined" value={description} onChange={(e) => setDescription(e.target.value)} />
 
-              {/* </Stack> */}
 
             </Typography>
           </DialogContent>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { PropTypes, observer } from "mobx-react"
+import {  observer } from "mobx-react"
 import ServicesStore from '../../store/ServicesStore';
 import MainStore from '../../store/MainStore';
 import { styled } from '@mui/material/styles';
@@ -11,7 +11,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
-// import Stack from '@mui/joy/Stack';
 import Typography from '@mui/material/Typography';
 import { useEffect } from 'react';
 import '../admin/Admin.css'
@@ -49,8 +48,6 @@ const Service = (observer((props) => {
     console.log("saveService");
     ServicesStore.saveService(MainStore.count, name, description, price, duration);
     ServicesStore.setIsClickSave(false);
-
-    // setOpens(false)
     handleClose();
     MainStore.incCount();
   }
@@ -81,14 +78,10 @@ const Service = (observer((props) => {
           <DialogContent dividers>
 
             <Typography gutterBottom>
-              {/* <Stack spacing={2}> */}
               <TextField id="outlined-basic" label="שם:" variant="outlined" value={name} onChange={(e) => setName(e.target.value)} />
               <TextField id="outlined-basic" label="תאור:" variant="outlined" value={description} onChange={(e) => setDescription(e.target.value)} />
               <TextField id="outlined-basic" label="מחיר" variant="outlined" value={price} onChange={(e) => setPrice(e.target.value)} />
               <TextField id="outlined-basic" label="משך הפגישה:" variant="outlined" value={duration} onChange={(e) => setDuration(e.target.value)} />
-
-              {/* </Stack> */}
-
             </Typography>
           </DialogContent>
           <DialogActions>

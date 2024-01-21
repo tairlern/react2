@@ -18,12 +18,10 @@ class servicesStore {
             service: observable,
             servicesArry: observable,
             isClickService: observable,
-           
             addservice: action,
             getServices: action,
             setIsClickSave: action,
             setIsClickService: action,
-            // setSer:action,
             saveService: action,
 
         })
@@ -65,7 +63,6 @@ class servicesStore {
 
         this.setIsClickService(false);
     }
-    // setSer=(val)=>{this.servicesArr=val}
     setIsClickSave = (val) => { this.isClickSave = val }
     setIsClickService = (val) => { this.isClickService = val }
     getServices = async () => {
@@ -73,7 +70,6 @@ class servicesStore {
         const services = await fetch("http://localhost:8787/services");
         const data = await services.json();
         this.servicesArry = ([...data]);
-        // this.setSer(data);
     }
 
 }

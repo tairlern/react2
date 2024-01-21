@@ -5,11 +5,9 @@ import MainStore from '../../store/MainStore';
 import { observer } from 'mobx-react-lite';
 import InputLabel from '@mui/material/InputLabel';
 import DetaliseEdit from '../detaliseEdit/DetaliseEdit';
-// import styled from '@mui/system/styled';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import "../../App.css"
-// import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import { useEffect } from 'react';
@@ -20,14 +18,11 @@ const BusinessDetails=(observer(()=> {
 
    useEffect(() => {
       async function fetchData() {
-        // You can await here
         await MainStore.getDetalise();
         console.log("LEN", Object.keys(MainStore.details).length)
         if (Object.keys(MainStore.details).length === 0) {
          SetIsOpens(true);
-         // <DetaliseEdit setIsOpen={SetIsOpens}></DetaliseEdit>
         }
-        // ...
       }
       if(MainStore.isLogin){
       fetchData();}
@@ -68,11 +63,7 @@ const BusinessDetails=(observer(()=> {
          <InputLabel id="outlined-basic"  > בעל העסק : {MainStore.details.owner} </InputLabel>
         </Typography>
         <br/>
-        {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-         
-     <InputLabel id="outlined-basic"  >:לוגו{MainStore.details.logo} </InputLabel>
-        </Typography>
-        <br/> */}
+      
      
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
            <InputLabel id="outlined-basic"  > תאור : {MainStore.details.description} </InputLabel>

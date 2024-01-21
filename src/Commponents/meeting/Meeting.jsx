@@ -1,27 +1,13 @@
 
 import * as React from 'react';
-// import TextField from '@mui/material/TextField';
-// import Button from '@mui/material/Button';
-// import { useState } from 'react';
-// import MainStore from '../../store/MainStore';
 import { observer } from 'mobx-react';
 import MeetingStore from '../../store/MeetingStore';
 import { useEffect } from 'react';
-// import { ClassNames } from '@emotion/react';
-// import { observer } from "mobx-react"
-// import Globalstore from "../Globalstore"
-// import { Today } from "@mui/icons-material";
 import './Meeting.css'
-
-// import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-// import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
-
 
 const bull = (
   <Box

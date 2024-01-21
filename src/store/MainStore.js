@@ -68,7 +68,6 @@ saveDetalise=async(name,address,phone,owner,logo,description)=>{
         "Content-Type": "application/json",
       },
     });
-    // console.log(response.status)
     this.getDetalise();
     console.log(this.getDetalise())
  }       
@@ -77,13 +76,9 @@ setDetails=(val)=>{this.details=val}
 
   getDetalise=async()=>{
     console.log("enter save detalis")
-    // console.log()
    const response = await fetch("http://localhost:8787/businessData");
    const data= await response.json();
    this.setDetails(data);
-//    this.details=JSON.parse(data);
-// console.log(this.details)
-
    }  
 
 setResponse=(val)=>{this.IsResponse=val;}

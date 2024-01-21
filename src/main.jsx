@@ -1,15 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-// import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter } from 'react-router-dom'
 import { RouterProvider } from 'react-router-dom'
 import User from './Commponents/user/User'
 import Admin from './Commponents/admin/Admin'
-// import Service from './Commponents/service/Service'
 import ServiceArr from './Commponents/serviceArr/ServiceArr'
 import Meeting from './Commponents/meeting/Meeting'
-// import App from './App'
+
 
 
 const router = createBrowserRouter([
